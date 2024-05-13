@@ -1,7 +1,7 @@
 import { useState } from "react";
 import style from './Livro.module.scss';
 
-function Livro() {
+function DadosLivro() {
 
   const enderecoRequicao = 'http://localhost:3000/livro';
 
@@ -30,7 +30,7 @@ function Livro() {
       <header className={style.header}>
         <div>
           <center>
-          <h2><strong>Livraria On Line</strong></h2>
+          <h2><strong>Dados do Livro</strong></h2>
           </center>
         </div>
       </header>
@@ -48,4 +48,4 @@ function Livro() {
   );
 }
 
-export default Livro;
+export default DadosLivro;
