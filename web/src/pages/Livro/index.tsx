@@ -5,26 +5,6 @@ function DadosLivro() {
 
   const enderecoRequicao = 'http://localhost:3000/livro';
 
-  const [livros, setLivros] = useState([]);
-  const [jaCarregouLivros, setJaCarregouLivros] = useState(false)
-
-  const carregaLivros = () => {
-    fetch(enderecoRequicao)
-      .then(resposta => {
-
-        if(!resposta.ok) { return Promise.reject(new Error('Algo deu errado!')) }
-
-        return resposta.json();
-      })
-      .then(dados => {
-        setLivros(dados);
-        setJaCarregouLivros(true);
-      })
-      .catch(error => { 
-        setJaCarregouLivros(false);
-      } );
-  }
-
   return (
     <div>
       <header className={style.header}>
@@ -35,15 +15,9 @@ function DadosLivro() {
         </div>
       </header>
       <br></br>
-      <button className={style.botao} onClick={carregaLivros}>Listar Livros</button>
-      {jaCarregouLivros && livros.length === 0 && <h3>Nenhum livro foi encontrado!</h3>}
-      {!jaCarregouLivros && <h3>Clique no botão para listar os livros</h3>}
-      {jaCarregouLivros && livros.map((livro: any) => (
-        <div key={livro.id}>
-          <h2>{livro.titulo}</h2>
-          <strong>{livro.nomeAutor}</strong>
+        <div >
+          <h2>EXIBIR DADOS DO LIVRO AQUI</h2>
         </div>
-      ))}
     </div>
   );
 }

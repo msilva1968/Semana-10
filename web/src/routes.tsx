@@ -8,10 +8,9 @@ export default function AppRouter() {
     <main className='container'>
       <Router>
         <Routes>
-          <Route path='/' element={<Inicio />} >
-            <Route path='Livro/:id' element={<Livro />} />
-          </Route>
-        <Route path='*' element={<NotFound />} />
+          <Route path='/' element={<Inicio />} />
+          <Route path='Livro/:id' element={<Livro />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </Router>
     </main>
