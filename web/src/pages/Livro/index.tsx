@@ -1,7 +1,7 @@
 import { useState } from "react";
 import style from './Livro.module.scss';
 
-function Inicio() {
+function Livro() {
 
   const enderecoRequicao = 'http://localhost:3000/livro';
 
@@ -48,4 +48,4 @@ function Inicio() {
   );
 }
 
-export default Inicio;
+export default Livro;
