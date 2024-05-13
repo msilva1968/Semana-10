@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ListaLivroDTO } from './dto/Listalivro.dto';
-import { BuscaLivroDTO } from './dto/Buscalivro.dto';
 import { LivroEntity } from './livro.entity';
 import { Repository } from 'typeorm';
 import { AtualizaLivroDTO } from './dto/AtualizaLivro.dto';
@@ -21,19 +20,20 @@ export class LivroService {
     const livroSalvo = await this.livroRepository.find();
 
     const livroLista = livroSalvo.map(
-      (livro) => new ListaLivroDTO(livro.titulo, livro.sinopse),
+      (livro) =>
+        new ListaLivroDTO(
+          livro.titulo,
+          livro.sinopse,
+          livro.sumario,
+          livro.preco,
+          livro.publicacao,
+          livro.idcategoria,
+          livro.idautor,
+        ),
     );
     return livroLista;
   }
 
-  async buscaLivro(isbn: string) {
-    const livroAchado = await this.livroRepository.findOneBy({ isbn });
-
-    const livroLista = livroAchado.map(
-      (livro) => new BuscaLivroDTO(livro.titulo, livro.sinopse),
-    );
-    return livroLista;
-  }
   async atualizaLivro(isbn: string, novosDados: AtualizaLivroDTO) {
     const entityName = await this.livroRepository.findOneBy({ isbn });
     Object.assign(entityName, novosDados);
