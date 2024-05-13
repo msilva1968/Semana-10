@@ -2,6 +2,7 @@ import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'livros' })
 export class LivroEntity {
+  [x: string]: any;
   @PrimaryGeneratedColumn('uuid')
   isbn: string;
 

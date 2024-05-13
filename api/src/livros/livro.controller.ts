@@ -30,9 +30,9 @@ export class LivroController {
     return livroCadastrado;
   }
 
-  @Get()
-  async listaTodos() {
-    return this.livroService.listaLivro();
+  @Get('/:isbn')
+  async listaTodos(@Param('isbn') isbn: string) {
+    return this.livroService.buscaLivro(isbn);
   }
 
   @Put('/:isbn')

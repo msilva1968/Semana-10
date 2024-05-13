@@ -1,7 +1,7 @@
 import { useState } from "react";
-import style from './Botao.module.scss';
+import style from './Inicio.module.scss';
 
-function App() {
+function Inicio() {
 
   const enderecoRequicao = 'http://localhost:3000/livro';
 
@@ -48,4 +48,4 @@ function App() {
   );
 }
 
-export default App;
+export default Inicio;
