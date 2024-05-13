@@ -1,4 +1,3 @@
-import PaginaPadrao from './components/PaginaPadrao';
 import Inicio from './pages/Inicio';
 import NotFound from './pages/NotFound';
 import Livro from './pages/Livro';
@@ -9,9 +8,7 @@ export default function AppRouter() {
     <main className='container'>
       <Router>
         <Routes>
-          <Route path='/' element={<PaginaPadrao />} >
-            <Route index element={<Inicio />} />
-          </Route>
+          <Route index element={<Inicio />} />
           <Route path='Livro/:id' element={<Livro />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
