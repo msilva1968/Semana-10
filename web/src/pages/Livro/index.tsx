@@ -1,7 +1,11 @@
+import { useParams, useNavigate } from 'react-router-dom';
 import { useState } from "react";
 import style from './Livro.module.scss';
 
 function DadosLivro() {
+
+  const { id } = useParams();
+  const navigate = useNavigate();
 
   const enderecoRequicao = 'http://localhost:3000/livro';
 
@@ -10,7 +14,7 @@ function DadosLivro() {
       <header className={style.header}>
         <div>
           <center>
-          <h2><strong>Dados do Livro</strong></h2>
+          <h2><strong>Livraria On Line - ( Dados do Livro )</strong></h2>
           </center>
         </div>
       </header>
