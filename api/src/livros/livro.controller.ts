@@ -35,6 +35,12 @@ export class LivroController {
     return this.livroService.listaLivro();
   }
 
+  @Get('/:isbn')
+  async buscaPorId(@Param('isbn') isbn: string) {
+    const livro = await this.livroService.buscarPorId(isbn);
+    return livro;
+  }
+
   @Put('/:isbn')
   async atualiza(
     @Param('isbn') isbn: string,

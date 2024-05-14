@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ListaLivroDTO } from './dto/Listalivro.dto';
 import { LivroEntity } from './livro.entity';
@@ -32,6 +32,15 @@ export class LivroService {
         ),
     );
     return livroLista;
+  }
+
+  async buscarPorId(isbn: string) {
+    const existeLivro = await this.livroRepository.findOneBy({ isbn });
+
+    if (!existeLivro) {
+      throw new NotFoundException('Livro não existe');
+    }
+    return existeLivro;
   }
 
   async atualizaLivro(isbn: string, novosDados: AtualizaLivroDTO) {

@@ -1,13 +1,30 @@
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useState } from "react";
 import style from './Livro.module.scss';
 
 function DadosLivro() {
 
   const { id } = useParams();
-  const navigate = useNavigate();
 
-  const enderecoRequicao = 'http://localhost:3000/livro';
+  const enderecoRequicao = `http://localhost:3000/livro/${ id }`;
+
+  const [livros, setLivros] = useState([]);
+  const [jaCarregouLivros, setJaCarregouLivros] = useState(false)
+
+  fetch(enderecoRequicao)
+    .then(resposta => {
+
+      if(!resposta.ok) { return Promise.reject(new Error('Algo deu errado!')) }
+
+      return resposta.json();
+    })
+    .then(dados => {
+      setLivros(dados);
+      setJaCarregouLivros(true);
+    })
+    .catch(error => { 
+      setJaCarregouLivros(false);
+    });
 
   return (
     <div>
@@ -19,10 +36,18 @@ function DadosLivro() {
         </div>
       </header>
       <br></br>
-        <div >
-          <h2>EXIBIR DADOS DO LIVRO AQUI</h2>
-        </div>
-    </div>
+      {jaCarregouLivros && livros.map((livro: any) => (
+        <div key={livro.id}>
+          <h2>{livro.titulo}</h2>
+          <h2>{livro.sinopse}</h2>
+          <h2>{livro.sumario}</h2>
+          <h2>{livro.preco}</h2>
+          <h2>{livro.publicacao}</h2>
+          <h2>{livro.idcategoria}</h2>
+          <h2>{livro.idautor}</h2>
+        </div> 
+      ))}
+      </div>
   );
 }
 
