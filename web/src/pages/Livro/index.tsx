@@ -38,13 +38,13 @@ function DadosLivro() {
       <br></br>
       {jaCarregouLivros && livros.map((livro: any) => (
         <div key={livro.id}>
-          <h2>"Titulo: "{livro.titulo}</h2>
-          <h2>"Sinopse: "{livro.sinopse}</h2>
-          <h2>"Sumário: "{livro.sumario}</h2>
-          <h2>"Preço: "{livro.preco}</h2>
-          <h2>"Publicação: "{livro.publicacao}</h2>
-          <h2>"Categoria: "{livro.idcategoria}</h2>
-          <h2>"Autor: "{livro.idautor}</h2>
+          <h2>Titulo: {livro.titulo}</h2>
+          <h2>Sinopse: {livro.sinopse}</h2>
+          <h2>Sumário: {livro.sumario}</h2>
+          <h2>Preço: {livro.preco}</h2>
+          <h2>Publicação: {livro.publicacao}</h2>
+          <h2>Categoria: {livro.idcategoria}</h2>
+          <h2>Autor: {livro.idautor}</h2>
         </div> 
       ))}
       </div>
